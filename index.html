@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GuruGo — Teachers on demand</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#8b5cf6">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-logo">🎓</div>
+    <div>
+      <div class="brand-name">Guru<span>Go</span></div>
+      <div class="brand-tag">teachers on demand</div>
+    </div>
+  </div>
+  <nav class="roles" id="roles">
+    <button data-role="student" class="active">🧑‍🎓 Student</button>
+    <button data-role="teacher">🧑‍🏫 Teacher</button>
+    <button data-role="admin">📊 Admin</button>
+  </nav>
+  <div class="persona" id="persona"></div>
+</header>
+
+<main id="main"></main>
+
+<footer class="foot">GuruGo demo · book a teacher like you book a ride · data saved locally</footer>
+
+<div id="modal-root"></div>
+<div id="toast-root"></div>
+
+<script src="app.js"></script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("/sw.js").catch(()=>{});}</script>
+</body>
+</html>
