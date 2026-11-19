@@ -1,13 +1,10 @@
-// static/ ko www/ me copy karta hai, local-api.js jodta hai, service worker hata deta hai.
 const fs = require("fs"), path = require("path");
-const SRC = path.join(__dirname, "..", "..", "gurugo", "static");
-const SRC2 = path.join(__dirname, "..", "web");
-const DST = path.join(__dirname, "..", "www");
-const base = fs.existsSync(SRC2) ? SRC2 : SRC;
+const ROOT = __dirname, DST = path.join(ROOT, "www");
 fs.rmSync(DST, { recursive: true, force: true });
-fs.cpSync(base, DST, { recursive: true });
-fs.copyFileSync(path.join(__dirname, "..", "local-api.js"), path.join(DST, "local-api.js"));
-fs.rmSync(path.join(DST, "sw.js"), { force: true });
+fs.mkdirSync(DST);
+for (const f of ["app.js", "style.css", "index.html", "manifest.json", "icon-192.png", "icon-512.png", "local-api.js"]) {
+  fs.copyFileSync(path.join(ROOT, f), path.join(DST, f));
+}
 let h = fs.readFileSync(path.join(DST, "index.html"), "utf8");
 h = h.replace(/<script>if\("serviceWorker"[\s\S]*?<\/script>/, "")
      .replace('<script src="app.js"></script>', '<script src="local-api.js"></script>\n<script src="app.js"></script>');
